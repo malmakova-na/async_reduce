@@ -1,17 +1,4 @@
-/**
- * type reduce = (
-    array: AsyncArray
-    fn: (
-        acc: any,
-        cur: any,
-        i: number,
-        src: AsyncArray,
-        cb: (result: any) => void
-    ) => void
-    initialValue: any
-    cb: (result: any) => void
-) => void
- */
+
 module.exports = function (Homework) {
 
     const getLength = async(arr) => new Promise((resolve) => arr.length((res)=>resolve(res)));
@@ -30,10 +17,10 @@ module.exports = function (Homework) {
         let isLess = await compare(i, length);
         while(isLess){
             let element = await getElement(array, i);
-            let result = await getAccumulator(answ, element, i, array,fn );
+            let result = await getAccumulator(answ, element, i, array, fn );
             answ = result;
             i = await add(i,1);
-            isLess = await compare(i, length)
+            isLess = await compare(i, length);
         }
         return cb(answ);
     }
